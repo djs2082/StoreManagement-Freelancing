@@ -1,0 +1,134 @@
+/* Made with love by Mutiullah Samim*/
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+
+.container{
+height: 100%;
+align-content: center;
+width:100%;
+}
+
+.card{
+height: 100%;
+margin-top: auto;
+margin-bottom: auto;
+width: 100%;
+float:left;
+background-color: rgba(0,0,0,0.5) !important;
+}
+.item
+{
+    margin-right:5px;
+}
+
+
+.card-header h3{
+color: white;
+}
+
+
+.input-group-prepend span{
+width: 50px;
+background-color: #FFC312;
+color: black;
+border:0 !important;
+}
+
+.input-group-postpend span{
+    width: 50px;
+    font-size: 20px;
+    color: red;
+    border:0 !important;
+    }
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.calculate_btn{
+color: black;
+background-color:#FFC312;
+}
+
+.login_btn{
+    color: black;
+    background-color:yellowgreen;
+    width:100%;
+    margin-top:20px;
+    margin-bottom:20px;
+    }
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}
+.price-tag
+{
+    max-width: 300px;
+    margin-left:20px;
+    margin-right:20px;
+    padding:auto;
+}
+
+.add-btn
+{
+    color:white;
+    font-size:30px;
+}
+
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+
+  .column {
+    float: left;
+    width: 15%;
+    padding: 1px;
+  }
+  .row {
+      margin-bottom: 50px;
+  }
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .override {
+    color:white;
+    position: fixed;
+    z-index: 1;
+    transition: 0.5s;
+  }
+
+  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 500px) {
+    .column {
+      width: 100%;
+    }
+  }

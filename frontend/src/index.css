@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* .login_background
+{
+  
+    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+    background-repeat: no-repeat;
+ position: fixed;    
+ top: 0;    
+ left: 0;    
+ right: 0;  
+bottom: 0;   
+min-width: 100%;  
+min-height: 100%;
+overflow: auto;
+    
+
+}
+
+.home_background
+{
+  
+    background-image: url('images/background2.jpg');
+    background-size: cover;
+    
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    overflow: auto;
+    
+} */
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

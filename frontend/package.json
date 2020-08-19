@@ -1,0 +1,60 @@
+{
+  "name": "himalaya",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@react-pdf/renderer": "^1.6.10",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "aios": "^1.0.0",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
+    "c3-react": "^0.1.13",
+    "canvasjs": "^1.8.3",
+    "create-react-class": "^15.6.3",
+    "d3": "^5.16.0",
+    "md5-hash": "^1.0.1",
+    "mdbreact": "^4.27.0",
+    "moment": "^2.27.0",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-bar-chart": "^0.1.2",
+    "react-bootstrap": "^1.3.0",
+    "react-charts": "^2.0.0-beta.7",
+    "react-datepicker": "^3.1.3",
+    "react-dom": "^16.13.1",
+    "react-google-charts": "^3.0.15",
+    "react-grid-system": "^7.0.3",
+    "react-loader": "^2.4.7",
+    "react-loader-advanced": "^1.7.1",
+    "react-native-sms": "^1.11.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "react-to-pdf": "0.0.11",
+    "react-toastify": "^6.0.8",
+    "styled-components": "^5.1.1",
+    "victory": "^35.0.8"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

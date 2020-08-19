@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Bill to {{receipt.customer.fname}} {{receipt.customer.lname}}</title>
+            {% load static %}
+
+        <style type="text/css">
+            body {
+                font-weight: 200;
+                font-size: 14px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+
+            #customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 2px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+#customers th {
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#bill table td {
+    background: 0 0;
+    border-bottom: none;
+    white-space: nowrap;
+    text-align: right;
+    padding: 8px 10px;
+    font-size: 1.2em;
+    border-top: 1px solid #aaa
+}
+
+#bill table tr:first-child td {
+    border-top: none
+}
+
+#bill table tr:last-child td {
+    color: #3989c6;
+    font-size: 1.4em;
+    border-top: 1px solid #3989c6
+}
+
+#bill table tr td:first-child {
+    border: none
+}
+
+
+        </style>
+    </head>
+    <body>
+ <body>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGmFmEDbFGHZOM6N8cMdm6051S2H0WzMoyPQ&usqp=CAU" style="width:80px;height:80px">
+            <!--<img src="https://shield.pythonanywhere.com/media/logo.jpg" style="width:80px;height:80px">-->
+        <div class='wrapper'>
+            <div class='header'>
+                <p class='title'>Denim Factory </p>
+                Address: Bokre Complex,Near Swiss Bakery ,Sri Nagar,Nanded - 431605
+            </div>
+        <div>
+        <div class='details'></div>
+            Receipt No.:   <strong><font color="red">{{receipt.id}}</font></strong><br/>
+            Bill to:       {{receipt.customer.fname}} {{receipt.customer.lname}} <br/>
+            Date:          {{receipt.date_time.date}}<br/>
+            Time:          {{receipt.date_time.time}}<br/>
+            Payment Method:{{receipt.payment_method}}
+            <hr class='hrItem' />
+        </div>
+    </div>
+<br>
+<br>
+
+<table id="customers">
+    <tr>
+        <td>Item</td>
+        <td>Size</td>
+        <td>Brand</td>
+        <td>Quantity</td>
+        <td>Original Price</td>
+        <td>Price (per piece) to pay</td>
+        <td>Total Price&nbsp;&nbsp;(Price x Quantity)</td>
+    </tr>
+    {% for i in sales_list %}
+    <tr>
+    <td>{{i.brand.item.name}}</td>
+    <td>{% if i.size == "" %} "N/A" {% endif %}{{i.size}}</td>
+    <td>{{i.brand.name}}</td>
+    <td>{{i.quantity}}</td>
+    <td>{{i.brand.cost_price}}0/-</td>
+    <td>{{i.selling_price}}0/-</td>
+     <td>{{i.selling_price}}0x{{i.quantity}}={% widthratio i.selling_price 1 i.quantity %}</td>
+    </tr>
+    {%endfor%}
+</table>
+<br>
+
+
+<table id="bill">
+  <tr>
+    <th>Total Amount:{{receipt.total_amount}}0/- </th>
+    <th>Total Discount:{{receipt.total_discount}}0/-</th>
+    <th>Amount Payable:{{receipt.amount_payable}}0/-</th>
+  </tr>
+
+</table>
+    </body>
+</html>

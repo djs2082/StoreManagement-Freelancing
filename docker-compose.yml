@@ -1,0 +1,21 @@
+version: '3'
+services:
+  frontend:
+    build: ./frontend/
+    command: bash -c "npm start 0.0.0.0:3000"
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - '3000:3000'
+    stdin_open: true
+  backend:
+    build: ./backend
+    working_dir: /backend/Himalaya
+
+    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend:/backend
+    ports:
+      - '8000:8000'
+    depends_on:
+      - frontend
