@@ -66,8 +66,8 @@ python3 manage.py createsuperuser
 
 This application is available for commercial purposess. For getting paid version of this, contact below:
 
-Email: dilipjoshis98@gmail.com 
-Mobile: 8975427620  
+Email: dilipjoshis98@gmail.com   
+Mobile: +91 8975427620  
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
