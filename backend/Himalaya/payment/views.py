@@ -163,7 +163,11 @@ class PaymentMethods(generics.ListAPIView):
             success_message={}
             total_amount_paid_today=0.0
             amount_wise_payment_list=[]
-            for i in Receipts.objects.values('payment_method__name').order_by('payment_method__name').annotate(total_price=Sum('total_amount')):
+            date=datetime.datetime.today()
+            year=date.year
+            month=date.month
+            day=date.day
+            for i in Receipts.objects.values('payment_method__name').order_by('payment_method__name').annotate(total_price=Sum('total_amount')).filter(date_time__gte=datetime.date(year,month,day),date_time__lte=datetime.date(year,month,day+1)):
                 print(i)
                 amount_wise_payment_list.append({"name":i['payment_method__name'],"amount":i['total_price']})
                 total_amount_paid_today+=i['total_price']
