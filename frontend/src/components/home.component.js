@@ -132,27 +132,25 @@ class Home extends Component {
         e.preventDefault();
         if (data.payment_method === "" || data.payment_method === "None") {
             this.errorOccured(404, "erro occurred", "Payment Option is not provided")
-            error = true;
-        }
-        data.items.map(item => {
-            if (item.item == "" || item.item == 'Select Item' || item.brand === 'Select Brand' || item.brand === "") {
-                this.errorOccured(400, "erro occurred", "something in not provided in item " + item.id)
+            console.log(this.state.payment_options[this.state.payment_options.length-1])
+            if(window.confirm("payment option is not provided, do you wish to continue with '"+this.state.payment_options[this.state.payment_options.length-1].name+"' option"))
+            {
+                data.payment_method=this.state.payment_options[this.state.payment_options.length-1].name
+            }
+            else
+            {
                 error = true;
+                this.setState({loaded:false})
+                return false;
             }
-        })
-
-
-        this.state.payment_options.map(option => {
-
-            if (option.name === data.payment_method) {
-                data.payment_method = option.id
-            }
-        })
+            console.log(data);
+            
+        }
 
         try {
             if (data.birth_day === "") {
                 if (window.confirm('DOB is not provided, Do you wish to continue??')) {
-                    data.birth_day = "01-01-2050"
+                    data.birth_day = null
                 }
                 else {
                     error = true;
@@ -169,8 +167,27 @@ class Home extends Component {
             this.errorOccured(400, "error occurred in dob", error.message)
 
         }
+
+        data.items.map(item => {
+            if (item.item == "" || item.item == 'Select Item' || item.brand === 'Select Brand' || item.brand === "") {
+                alert("item "+item.id+" is incomplete??")
+                this.errorOccured(400, "erro occurred", "something in not provided in item " + item.id)
+                error = true;
+            }
+        })
+
+
+        this.state.payment_options.map(option => {
+
+            if (option.name === data.payment_method) {
+                data.payment_method = option.id
+            }
+        })
+
+
         if (error === true) {
             data.birth_day=""
+            this.setState({loaded:false})
             return false;
         }
         try {
@@ -473,10 +490,10 @@ class Home extends Component {
                         <div style={{ width: "100%" }}><input autoComplete="off" onChange={this.update_item} type="number" value={item.quantity} className="form-control item" min="1" name="quantity" placeholder="Quantity/Pairs" required /></div>
                     </div>
                     <div className="column">
-                        <div style={{ width: "100%" }}><input autoComplete="off" type="number" value={item.actual_price} className="form-control item " min="0" name="actual_price" placeholder="Price" readOnly="True" required /></div>
+                        <div style={{ width: "100%" }}><input autoComplete="off" type="number" step='0.01' value={item.actual_price} className="form-control item " min="0" name="actual_price" placeholder="Price" readOnly="True" required /></div>
                     </div>
                     <div className="column">
-                        <div style={{ width: "100%" }}><input autoComplete="off" onChange={this.update_item} type="number" value={item.selling_price} className="form-control item " min="0" name="selling_price" placeholder="Price" required /></div>
+                        <div style={{ width: "100%" }}><input autoComplete="off" step='0.01' onChange={this.update_item} type="number" value={item.selling_price} className="form-control item " min="0" name="selling_price" placeholder="Price" required /></div>
                     </div>
                     <div className="input-group-postpend column" style={{ width: "10%" }}>
                         {item.deleteable ? (<span onClick={this.delete_item} ><i className="fa fa-times-circle add-btn"></i></span>) : (<span onClick={this.add_item} id="add-item" ><i className="fa fa-plus-circle add-btn"></i></span>)}
