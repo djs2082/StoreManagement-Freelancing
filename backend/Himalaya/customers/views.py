@@ -4,7 +4,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view,renderer_classes,permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.pagination import PageNumberPagination
-
+from django.core.exceptions import EmptyResultSet
+from rest_framework.serializers import ValidationError
 from django.core.exceptions import ObjectDoesNotExist
 import schedule
 from rest_framework import generics
@@ -18,6 +19,7 @@ import time
 from requirements import success,error
 from .serializers import CustomerSerializer
 from .models import Customer as Customer
+import datetime
 
 
 class StandardResultsSetPagination(PageNumberPagination,APIView):
@@ -42,7 +44,7 @@ class StandardResultsSetPagination(PageNumberPagination,APIView):
     	finally:
     		return Response(response_message)
 
-class Customer(generics.ListAPIView):
+class CustomerView(generics.ListAPIView):
 	permission_classes = [(IsAuthenticated)]
 	parser_class = (FileUploadParser,MultiPartParser,FormParser,JSONParser)
 	pagination_class=StandardResultsSetPagination
@@ -99,3 +101,25 @@ class Customer(generics.ListAPIView):
 			response_message=error.APIErrorResponse(404,{'error3':str(e)}).respond()
 		finally:
 			return Response(response_message)
+
+
+@api_view(['GET',])
+@permission_classes([IsAuthenticated])
+def get_bday(request):
+	try:
+		date=datetime.datetime.today()
+		month=date.month
+		day=date.day
+		print(month,day)
+		queryset=Customer.objects.all().filter(birth_day__day=day,birth_day__month=month)
+		serialized=CustomerSerializer(queryset,many=True)
+		print(serialized.data)
+		response = success.APIResponse(200, serialized.data).respond()
+	except EmptyResultSet as empty_error:
+		response = error.APIErrorResponse(404,str(empty_error)).respond()
+	except ValidationError as error:
+		response        = error.APIErrorResponse(409, str(error)).respond()
+	except Exception as err:
+		response = error.APIErrorResponse(400, err).respond()
+	finally:
+		return(Response(response))

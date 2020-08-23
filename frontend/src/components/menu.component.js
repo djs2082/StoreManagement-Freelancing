@@ -35,6 +35,7 @@ render()
     <NavLink to="/sale">Today's Sale</NavLink>
     <NavLink to="/statistics">View Statistics</NavLink>
     <NavLink to="/items">Items</NavLink>
+    <NavLink to="/bday">Today's Birthdays</NavLink>
     <a target="blank" href={window.API_URL+'/admin/'}>Admin</a>
     <NavLink to="/">Logout</NavLink>
   </div>

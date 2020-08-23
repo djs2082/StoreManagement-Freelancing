@@ -7,6 +7,7 @@ import Customer from './components/customer.component'
 import Graph from './components/statistics.component'
 import Sale from './components/sale.component'
 import Items from './components/items.component'
+import Birthday from './components/bday.component'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {BrowserRouter,Route,Switch, Router} from 'react-router-dom';
 
@@ -20,6 +21,7 @@ function App() {
      <Route exact path='/sale' component={Sale}></Route>
      <Route exact path='/statistics' component={Graph}></Route>
      <Route exact path='/items' component={Items}></Route>
+     <Route exact path='/bday' component={Birthday}></Route>
 
 
      <Route exact path='/' component={Login}></Route>

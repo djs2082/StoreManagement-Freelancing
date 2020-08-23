@@ -39,7 +39,7 @@ class StandardResultsSetPagination(PageNumberPagination,APIView):
     		'results': data
     		}
     		response_message=success.APIResponse(200,response).respond()
-    		print(response_message);
+    		print(response_message)
     	except Exception as e:
     		response_message=error.APIErrorResponse(404,{'error':str(e)}).respond()
     	finally:
@@ -63,7 +63,8 @@ class Receipt(generics.ListAPIView):
 			customer=None
 			receipt=None
 			total_amount=0.0
-			print(request.data)
+
+			
 			if(len(request.data['fname'])>0 and len(request.data['lname'])>0 and len(request.data['mobile'])==10 and request.data['mobile'].isdigit()):
 				try:
 					customer=Customer.objects.get(mobile=request.data['mobile'])
