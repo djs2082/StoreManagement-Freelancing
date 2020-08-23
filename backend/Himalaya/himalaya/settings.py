@@ -90,10 +90,10 @@ WSGI_APPLICATION = 'himalaya.wsgi.application'
 DATABASES = {
     #     'default': {
     #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'shield$shield',
-    #     'USER': 'shield',
-    #     'PASSWORD': 'himalaya@1712',
-    #     'HOST': 'shield.mysql.pythonanywhere-services.com',
+    #     'NAME': 'Himalaya',
+    #     'USER': 'dilip',
+    #     'PASSWORD': 'dilip',
+    #     'HOST': 'localhost',
     # }
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

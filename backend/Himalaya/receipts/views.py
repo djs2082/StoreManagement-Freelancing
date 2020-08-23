@@ -20,6 +20,7 @@ from rest_framework import filters
 from django.db.models import Count,Sum
 from twilio.rest import Client
 from django.conf import settings
+import datetime
 
 
 class StandardResultsSetPagination(PageNumberPagination,APIView):
@@ -48,7 +49,11 @@ class Receipt(generics.ListAPIView):
 	permission_classes = [(IsAuthenticated)]
 	parser_class = (FileUploadParser,MultiPartParser,FormParser,JSONParser)
 	pagination_class=StandardResultsSetPagination
-	queryset=Receipts.objects.filter(date_time__date=datetime.datetime.today()).order_by('-id')
+	date=datetime.datetime.today()
+	year=date.year
+	month=date.month
+	day=date.day
+	queryset=Receipts.objects.filter(date_time__gte=datetime.date(year,month,day),date_time__lte=datetime.date(year,month,day+1)).order_by('-id')
 	serializer_class=ReceiptsSerializer
 	filter_backends = [filters.SearchFilter]
 	search_fields  = ['customer__fname','customer__lname','customer__mobile']

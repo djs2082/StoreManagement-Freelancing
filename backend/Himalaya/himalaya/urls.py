@@ -25,9 +25,9 @@ from django.views.static import serve
 from django.contrib.auth.models import Group, User
 
 admin.autodiscover()
-admin.site.unregister(Token)
-admin.site.unregister(User)
-admin.site.unregister(Group)
+# admin.site.unregister(Token)
+# admin.site.unregister(User)
+# admin.site.unregister(Group)
 
 admin.site.site_header = "Denim Factory Admin"
 admin.site.site_title = "Denim Factory Admin Portal"
